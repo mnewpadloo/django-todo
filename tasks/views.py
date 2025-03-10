@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from .models import Task, Category
 from .forms import TaskForm
 
 def task_list(request):
     tasks = Task.objects.all()
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
+    categories = Category.objects.all()  # Добавляем категории
+    return render(request, 'tasks/task_list.html', {'tasks': tasks, 'categories': categories})
+
 
 def task_create(request):
     if request.method == 'POST':
@@ -31,3 +33,7 @@ def task_delete(request, task_id):
     task = Task.objects.get(id=task_id)
     task.delete()
     return redirect('task_list')
+
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'tasks/category_list.html', {'categories': categories})
