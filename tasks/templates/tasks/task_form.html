@@ -21,6 +21,10 @@
             <label for="id_category">Категория:</label>
             {{ form.category }}
         </div>
+        <div class="form-group">
+            <label for="id_priority">Приоритет:</label>
+            {{ form.priority }}
+        </div>
         <button type="submit">Сохранить</button>
         <a href="{% url 'task_list' %}">Назад</a>
     </form>

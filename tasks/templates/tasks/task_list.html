@@ -10,6 +10,9 @@
         {% if task.description %}
         <span class="task-desc">{{ task.description }}</span>
         {% endif %}
+        {% if task.priority %}
+        <span class="task-priority">[Приоритет: {{ task.priority.level }}]</span>
+        {% endif %}
         <a href="{% url 'task_update' task.id %}" class="edit-btn">✏️</a>
         <a href="{% url 'task_delete' task.id %}" class="delete-btn">🗑️</a>
     </li>

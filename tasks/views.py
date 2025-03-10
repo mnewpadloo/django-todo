@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Task, Category
+from .models import Task, Category, Priority
 from .forms import TaskForm
 
 def task_list(request):
