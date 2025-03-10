@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{% if form.instance.pk %}Редактировать{% else %}Создать{% endif %} задачу</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Сохранить</button>
-</form>
-<a href="{% url 'task_list' %}">Назад</a>
+<div class="task-form">
+    <h1>{% if form.instance.pk %}Редактировать{% else %}Создать{% endif %} задачу</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title">Название:</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label for="id_description">Описание:</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label for="id_completed">Завершено:</label>
+            {{ form.completed }}
+        </div>
+        <div class="form-group">
+            <label for="id_category">Категория:</label>
+            {{ form.category }}
+        </div>
+        <button type="submit">Сохранить</button>
+        <a href="{% url 'task_list' %}">Назад</a>
+    </form>
+</div>
 {% endblock %}

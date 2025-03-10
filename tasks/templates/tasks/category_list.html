@@ -6,7 +6,7 @@
     {% for category in categories %}
     <div class="category-box">
         <h2>{{ category.name }}</h2>
-        <ul>
+        <ul class="task-list">
             {% for task in category.task_set.all %}
             <li>{{ task.title }}</li>
             {% empty %}
