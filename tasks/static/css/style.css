@@ -1,19 +1,25 @@
+/* Общие стили */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f4f3;
     color: #333;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* Заголовок */
 h1 {
     color: #89a96d;
 }
 
+/* Убираем маркеры у списка */
 ul {
     list-style-type: none;
     padding: 0;
 }
 
+/* Стили для задач */
 .task {
     background: #fff;
     padding: 10px;
@@ -24,45 +30,33 @@ ul {
     position: relative;
 }
 
+/* Выполненные задачи */
 .task.done {
     text-decoration: line-through;
     background: rgba(76, 175, 80, 0.1);
+    opacity: 0.7;
 }
 
-.task-number {
+/* Стиль завершенных задач */
+.task.completed {
+    background: #9cbb87 !important;
+    color: white;
     font-weight: bold;
-    margin-right: 10px;
 }
 
-.task-desc {
-    display: none;
-    position: absolute;
-    background: #ffffff;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    left: 50%;
-    transform: translateX(-50%);
+/* Контейнер категорий */
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
-.task:hover .task-desc {
-    display: block;
-}
-
-.edit-btn {
-    color: blue;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-.delete-btn {
-    color: red;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
+/* Блок категории */
 .category-box {
-    width: 250px; /* Ограничение ширины */
+    width: 250px;
     background: #e8f5e9;
     padding: 15px;
     border-radius: 10px;
@@ -70,7 +64,25 @@ ul {
     text-align: center;
 }
 
-.add-btn {
+/* Стили для списка задач внутри категорий */
+.task-list {
+    padding: 0;
+    margin-top: 15px;
+}
+
+.task-list li {
+    display: block;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Кнопки */
+.add-btn, .task-form button {
     display: inline-block;
     background: #89a96d;
     color: white;
@@ -79,48 +91,16 @@ ul {
     text-decoration: none;
     margin-top: 20px;
     transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.add-btn:hover {
+.add-btn:hover, .task-form button:hover {
     background-color: #586d48;
 }
 
-.category-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Центрируем категории */
-    gap: 20px;
-    max-width: 80%; /* Ограничиваем ширину, чтобы не было у стен */
-    margin: 0 auto; /* Центрируем по горизонтали */
-}
-
-/* Навигационное меню */
-.nav-menu {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #89a96d;
-    border-radius: 10px;
-    margin: 10px auto;
-    width: 80%;
-}
-
-.nav-btn {
-    display: inline-block;
-    background: #89a96d;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: background-color 0.3s;
-}
-
-.nav-btn:hover {
-    background-color: #586d48;
-}
-
-/* Форма создания задачи */
+/* Форма */
 .task-form {
     background: #fff;
     padding: 20px;
@@ -130,9 +110,7 @@ ul {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.task-form input[type="text"],
-.task-form textarea,
-.task-form select {
+.task-form input, .task-form textarea, .task-form select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -141,21 +119,7 @@ ul {
     font-size: 16px;
 }
 
-.task-form button {
-    background: #89a96d;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.task-form button:hover {
-    background-color: #586d48;
-}
-
+/* Кнопка "Отмена" в форме */
 .task-form a {
     display: inline-block;
     background: #ccc;
@@ -171,30 +135,47 @@ ul {
     background-color: #bbb;
 }
 
-/* Стили для списка задач внутри категорий */
-.task-list {
-    padding: 0;
-    margin-top: 15px;
-    list-style-type: none;
-}
-
-.task-list li {
-    display: block;
-    width: calc(100% - 20px); /* Почти до краев категории, но с отступом */
+/* Навигационное меню */
+.nav-menu {
+    display: flex;
+    justify-content: center;
     padding: 10px;
-    margin: 5px auto; /* Центрируем задачи внутри категории */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background-color: #89a96d;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 80%;
 }
 
-
-.task.done {
-    text-decoration: line-through;
-    opacity: 0.7;
+/* Кнопки меню */
+.nav-btn {
+    display: inline-block;
+    background: #89a96d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: background-color 0.3s;
 }
 
+.nav-btn:hover {
+    background-color: #586d48;
+}
+
+/* Кнопки "Редактировать" и "Удалить" */
+.edit-btn {
+    color: blue;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.delete-btn {
+    color: red;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Статус задачи */
 .task-status {
     background-color: #4CAF50;
     color: white;
@@ -205,8 +186,21 @@ ul {
     margin-left: 10px;
 }
 
-.task.completed {
-    background: #9cbb87 !important; /* Новый зеленый цвет для выполненных задач */
-    color: white; /* Белый текст для контраста */
-    font-weight: bold;
+/* Описание задачи */
+.task-desc {
+    display: none;
+    position: absolute;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap; /* Предотвращает перенос строк */
+    z-index: 10; /* Чтобы не перекрывалось другими элементами */
+}
+
+/* Показываем описание при наведении */
+.task:hover .task-desc {
+    display: block;
 }
