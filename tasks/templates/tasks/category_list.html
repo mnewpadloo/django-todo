@@ -1,21 +1,21 @@
-{% extends "base.html" %}
+{% extends 'tasks/base.html' %}
+
+{% block title %}Категории{% endblock %}
 
 {% block content %}
-<h1>Категории</h1>
-<div class="categories">
-    {% for category in categories %}
-    <div class="category-box">
-        <h2>{{ category.name }}</h2>
-        <ul>
-            {% for task in category.task_set.all %}
-            <li>{{ task.title }}</li>
-            {% empty %}
-            <li>Нет задач</li>
-            {% endfor %}
-        </ul>
+    <h1>Категории</h1>
+    <div class="categories">
+        {% for category in categories %}
+            <div class="category">
+                <h2>{{ category.name }}</h2>
+                <ul>
+                    {% for task in category.task_set.all %}
+                        <li>{{ task.title }}</li>
+                    {% empty %}
+                        <p>Нет задач в этой категории</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p>Нет категорий</p>
-    {% endfor %}
-</div>
 {% endblock %}
