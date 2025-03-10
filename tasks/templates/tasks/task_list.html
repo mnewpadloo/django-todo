@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Список задач</h1>
-<ul>
-    {% for task in tasks %}
-    <li class="task {% if task.completed %}done{% endif %}">
-        <span class="task-number">{{ forloop.counter }}.</span>
-        <span class="task-title">{{ task.title }}</span>
-        {% if task.description %}
-        <span class="task-desc">{{ task.description }}</span>
-        {% endif %}
-        {% if task.priority %}
-        <span class="task-priority">[Приоритет: {{ task.priority.level }}]</span>
-        {% endif %}
-        <a href="{% url 'task_update' task.id %}" class="edit-btn">✏️</a>
-        <a href="{% url 'task_delete' task.id %}" class="delete-btn">🗑️</a>
-    </li>
-    {% empty %}
-    <li>Нет задач</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'task_create' %}" class="add-btn">Добавить задачу</a>
+<div class="task-container">
+    <h1>Список задач</h1>
+    <ul>
+        {% for task in tasks %}
+        <li class="task {% if task.completed %}done{% endif %}">
+            <span class="task-number">{{ forloop.counter }}.</span>
+            <span class="task-title">{{ task.title }}</span>
+            {% if task.description %}
+            <span class="task-desc">{{ task.description }}</span>
+            {% endif %}
+            {% if task.priority %}
+            <span class="task-priority">[Приоритет: {{ task.priority.level }}]</span>
+            {% endif %}
+            <a href="{% url 'task_update' task.id %}" class="edit-btn">✏️</a>
+            <a href="{% url 'task_delete' task.id %}" class="delete-btn">🗑️</a>
+        </li>
+        {% empty %}
+        <li>Нет задач</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'task_create' %}" class="add-btn">Добавить задачу</a>
+</div>
 {% endblock %}

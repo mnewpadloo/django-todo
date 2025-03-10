@@ -62,14 +62,12 @@ ul {
 }
 
 .category-box {
-    display: inline-block;
+    width: 250px; /* Ограничение ширины */
     background: #e8f5e9;
     padding: 15px;
-    margin: 10px;
-    width: 250px;
-    text-align: center;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .add-btn {
@@ -90,8 +88,10 @@ ul {
 .category-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* Центрируем категории */
     gap: 20px;
-    justify-content: center;
+    max-width: 80%; /* Ограничиваем ширину, чтобы не было у стен */
+    margin: 0 auto; /* Центрируем по горизонтали */
 }
 
 /* Навигационное меню */
@@ -173,16 +173,40 @@ ul {
 
 /* Стили для списка задач внутри категорий */
 .task-list {
-    margin-top: 15px; /* Отступ сверху, чтобы задачи не "прилипали" к заголовку */
-    padding-left: 20px; /* Отступ слева для списка */
-    text-align: left; /* Выравнивание текста задач по левому краю */
-    list-style-type: none; /* Убираем стандартные маркеры списка */
+    padding: 0;
+    margin-top: 15px;
+    list-style-type: none;
 }
 
 .task-list li {
-    margin-bottom: 10px; /* Отступ между задачами */
-    padding: 5px; /* Внутренний отступ для каждой задачи */
-    background-color: #f9f9f9; /* Легкий фон для каждой задачи */
-    border-radius: 5px; /* Закругленные углы */
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Тень для каждой задачи */
+    display: block;
+    width: calc(100% - 20px); /* Почти до краев категории, но с отступом */
+    padding: 10px;
+    margin: 5px auto; /* Центрируем задачи внутри категории */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.task.done {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.task-status {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.task.completed {
+    background: #9cbb87 !important; /* Новый зеленый цвет для выполненных задач */
+    color: white; /* Белый текст для контраста */
+    font-weight: bold;
 }
