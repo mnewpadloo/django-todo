@@ -4,9 +4,7 @@ from .forms import TaskForm
 
 def task_list(request):
     tasks = Task.objects.all()
-    categories = Category.objects.all()  # Добавляем категории
-    return render(request, 'tasks/task_list.html', {'tasks': tasks, 'categories': categories})
-
+    return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 def task_create(request):
     if request.method == 'POST':

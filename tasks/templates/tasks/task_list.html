@@ -1,26 +1,21 @@
-{% extends 'tasks/base.html' %}
-
-{% block title %}Список задач{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-    <h1>Список задач</h1>
-    <ul class="task-list">
-        {% for task in tasks %}
-            <li class="task-item {% if task.completed %}completed{% endif %}">
-                <span class="task-number">{{ forloop.counter }}.</span>
-                <span class="task-title">{{ task.title }}</span>
-
-                {% if task.description %}
-                    <span class="task-desc">{{ task.description }}</span>
-                {% endif %}
-
-                <div class="task-actions">
-                    <a href="{% url 'task_update' task.id %}" class="edit-btn">✏️</a>
-                    <a href="{% url 'task_delete' task.id %}" class="delete-btn">🗑️</a>
-                </div>
-            </li>
-        {% empty %}
-            <p>Нет задач</p>
-        {% endfor %}
-    </ul>
+<h1>Список задач</h1>
+<ul>
+    {% for task in tasks %}
+    <li class="task {% if task.completed %}done{% endif %}">
+        <span class="task-number">{{ forloop.counter }}.</span>
+        <span class="task-title">{{ task.title }}</span>
+        {% if task.description %}
+        <span class="task-desc">{{ task.description }}</span>
+        {% endif %}
+        <a href="{% url 'task_update' task.id %}" class="edit-btn">✏️</a>
+        <a href="{% url 'task_delete' task.id %}" class="delete-btn">🗑️</a>
+    </li>
+    {% empty %}
+    <li>Нет задач</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'task_create' %}" class="add-btn">Добавить задачу</a>
 {% endblock %}
